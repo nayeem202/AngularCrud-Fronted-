@@ -1,0 +1,55 @@
+<p>product works!</p>
+
+<form (ngSubmit)="isSave? saveStudent():updateProduct(product.productId)">
+    <table>
+        <tr>
+            <td>Product Name</td>
+            <td><input type="text" [(ngModel)]="product.productName" name="productName" id="productName" /></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="number" [(ngModel)]="product.productPrice" name="productPrice" id="productPrice" /></td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td><input type="number" [(ngModel)]="product.productQuantity" name="productQuantity" id="productQuantity" /></td>
+        </tr>
+        <tr>
+            <td>Reamarks</td>
+            <td><input type="text" [(ngModel)]="product.remarks" name="remarks" id="remarks" /></td>
+        </tr>
+     
+        <tr>
+            <td></td>
+            <td><input type="submit" value="{{isSave? 'Save':'Update'}}" />          
+        </tr>
+    </table>
+</form>
+
+<button (click)="toggleStudentList()">Show Student List</button>
+<table *ngIf="isShowTable" border="1" cellpadding="1" cellspacing="0" width=75%>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Remarks</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of Products.data; index as i;">
+            <td>{{product.productId}}</td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productPrice}}</td>
+            <td>{{product.productQuantity}}</td>
+            <td>{{product.remarks}}</td>
+         
+            <td>
+                <button (click)= "editProduct(product)">Edit</button>
+                <button (click)= "deleteProduct(product)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
